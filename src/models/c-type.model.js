@@ -2,22 +2,19 @@
 // for more of what you can do here.
 const { Model } = require('objection');
 
-class Users extends Model {
+class CType extends Model {
 
   static get tableName() {
-    return 'users';
+    return 'c_type';
   }
 
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['password'],
+      required: ['text'],
 
       properties: {
-      
-        email: { type: ['string', 'null'] },
-        password: 'string',
-      
+        text: { type: 'string' }
       }
     };
   }
@@ -31,4 +28,5 @@ class Users extends Model {
   }
 }
 
-module.exports = Users;
+module.exports = CType;
+
