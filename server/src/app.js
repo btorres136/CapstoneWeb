@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const logger = require('./logger');
 
-require('dotenv').config();
+require('dotenv').config({path:'../../.env'});
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
