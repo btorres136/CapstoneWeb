@@ -1,0 +1,108 @@
+.main{
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  &__content{
+    z-index: 10000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.header__text-box{
+  text-align: center;
+}
+
+.heading-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem;
+
+  &--btn{
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: $default-font-size;
+        background-color: #5988aa;
+        color: #fff;
+        //Change for the <button> element
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 1rem 2rem rgba($color-black,.2);
+      text-decoration: none;
+      color: #fff;
+
+
+      &::after {
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+      }
+    }
+
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+      border-radius: 10rem;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      transition: all .4s;
+      background-color:#5988aa;
+    }
+  }
+
+}
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards;
+}
+
+.heading-primary{
+  color: #fff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+  }
+  &--sub{
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+  }
+
+}
+.spine-canvas {
+  margin: 0;
+  min-height: 100vh;
+  min-width: 100vw;
+  background: '#000';
+  //z-index: -100;
+}

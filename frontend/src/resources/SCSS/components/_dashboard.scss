@@ -1,0 +1,30 @@
+.wrapper{
+  min-height: calc(100vh - 45.0667px);
+  padding: 3rem;
+  background-color: #f5f7fa;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+
+
+  &--info{
+    font-size: $default-font-size;
+    text-align: left;
+  }
+}
+
+.UserAltIcon {
+  margin-right: 2rem;
+  font-size: 9rem;
+}
+
+
+.BoneIcon{
+  margin-right: 2rem;
+  transform: rotateZ(45deg);
+  font-size: 9rem;
+}
+

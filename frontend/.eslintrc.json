@@ -1,15 +1,28 @@
 {
+  "plugins": [
+    "react"
+  ],
   "env": {
     "es6": true,
     "node": true,
     "mocha": true
   },
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
+  "settings": {
+    "react":{
+      "version":"detect"
+    }
+  },
   "rules": {
     "indent": [
       "error",

@@ -1,31 +1,33 @@
 // See https://vincit.github.io/objection.js/#models
 // for more of what you can do here.
 const { Model } = require('objection');
+const tableNames = require('../constants/tableNames');
 
 class SType extends Model {
-
   static get tableName() {
-    return 's_type';
+    return tableNames.sTypeTable;
   }
 
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['text'],
+      required: ['risk', 'lowAngle', 'highAngle'],
 
       properties: {
-        text: { type: 'string' }
-      }
+        risk: { type: 'number' },
+        lowAngle: { type: 'number' },
+        highAngle: { type: 'number' },
+      },
     };
   }
 
   $beforeInsert() {
-    this.createdAt = this.updatedAt = new Date().toISOString();
+    this.created_at = this.updated_at = new Date().toISOString();
   }
 
   $beforeUpdate() {
-    this.updatedAt = new Date().toISOString();
+    this.updated_at = new Date().toISOString();
   }
 }
 
-module.exports =  SType;
+module.exports = SType;

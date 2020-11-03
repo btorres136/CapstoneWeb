@@ -15,22 +15,22 @@ exports.up = async (knex) => {
   await Promise.all([
     knex.schema.createTable(tableNames.userTable, (table) => {
       table.increments().notNullable();
-      table.string('email', 254).notNullable();
+      table.string('email', 320).notNullable().i;
       table.string('name', 35).notNullable();
       table.string('lastName', 50).notNullable();
       table.integer('age', 2).notNullable();
-      table.string('hash', 255).notNullable();
+      table.string('password', 2000).notNullable();
       addDefaultColumns(table);
     }),
     knex.schema.createTable(tableNames.cTypeTable, (table) => {
       table.increments().notNullable();
-      table.string('risk', 255).notNullable();
+      table.float('risk').notNullable();
       table.float('angle').notNullable();
       addDefaultColumns(table);
     }),
     knex.schema.createTable(tableNames.sTypeTable, (table) => {
       table.increments().notNullable();
-      table.string('risk', 255).notNullable();
+      table.float('risk').notNullable();
       table.float('lowAngle').notNullable();
       table.float('highAngle').notNullable();
       addDefaultColumns(table);
