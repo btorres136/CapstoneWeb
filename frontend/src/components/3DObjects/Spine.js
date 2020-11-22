@@ -7,7 +7,7 @@ const Spine = (props) => {
   const { camera, gl } = useThree();
   camera.position.z = 10;
   camera.position.y = 6;
-  gl.setClearColor('#000');
+  gl.setClearColor(props.color);
   useFrame(() => {
     props.spine.rotation.y += 0.002;
   });
@@ -18,7 +18,8 @@ const Spine = (props) => {
 
 Spine.propTypes = {
   spine: PropTypes.any,
-  position: PropTypes.array
+  position: PropTypes.array,
+  color: PropTypes.string
 };
 
 export default Spine;

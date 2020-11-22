@@ -20,6 +20,20 @@ class CType extends Model {
     };
   }
 
+  static get relationMappings() {
+    const analysis = require('./analysis.model');
+    return {
+      analysis: {
+        relation: Model.HasOneRelation,
+        modelClass: analysis,
+        join: {
+          from: 'cType.id',
+          to: 'analysis.cType_id'
+        }
+      }
+    }
+  }
+
   $beforeInsert() {
     this.created_at = this.updated_at = new Date().toISOString();
   }

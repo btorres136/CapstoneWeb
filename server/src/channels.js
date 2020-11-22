@@ -1,3 +1,5 @@
+const { data } = require("./logger");
+
 module.exports = function(app) {
   if(typeof app.channel !== 'function') {
     // If no real-time functionality has been configured just return
@@ -7,9 +9,18 @@ module.exports = function(app) {
   app.on('connection', connection => {
     // On a new real-time connection, add it to the anonymous channel
     app.channel('anonymous').join(connection);
+    console.log('conection');
+  });
+
+  app.service('users').on('removed', user => {
+    app.channel(app.channels).leave(connection => {
+      return user._id === connection.user._id;
+    });
   });
 
   app.on('login', (authResult, { connection }) => {
+
+
     // connection can be undefined if there is no
     // real-time connection, e.g. when logging in via REST
     if(connection) {
@@ -21,6 +32,7 @@ module.exports = function(app) {
 
       // Add it to the authenticated user channel
       app.channel('authenticated').join(connection);
+
 
       // Channels can be named anything and joined on any condition 
       
@@ -35,6 +47,8 @@ module.exports = function(app) {
       // app.channel(`userIds/${user.id}`).join(connection);
     }
   });
+
+
 
   // eslint-disable-next-line no-unused-vars
   app.publish((data, hook) => {

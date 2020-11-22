@@ -6,7 +6,9 @@ const hooks = require('./analysis.hooks');
 module.exports = function (app) {
   const options = {
     Model: analysisModel,
-    paginate: app.get('paginate')
+    paginate: app.get('paginate'),
+    whitelist: ['$eager'],
+    allowedEager: '[cType, sType, patient, doctor, spine]'
   };
 
   // Initialize our service with any options it requires
@@ -15,5 +17,5 @@ module.exports = function (app) {
   // Get our initialized service so that we can register hooks
   const service = app.service('analysis');
 
-  service.hooks(hooks);
+  service.hooks(hooks(app));
 };

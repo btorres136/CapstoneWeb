@@ -1,0 +1,21 @@
+.myAnalysis{
+  &__Search{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+
+    &--dropbox {
+      width: 90%;
+      font-size: 1.5rem;
+    }
+
+    &--button{
+      width: 9%;
+      font-size: 1.5rem;
+    }
+  }
+}
+

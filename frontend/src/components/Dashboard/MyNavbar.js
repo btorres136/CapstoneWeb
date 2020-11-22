@@ -2,7 +2,7 @@ import React from 'react';
 import {Navbar} from 'react-bootstrap';
 
 const MyNavbar = () => {
-  return (<Navbar variant='dark' expand='lg' className='shadow-lg mynavbar'>
+  return (<Navbar variant='dark' expand='lg' className='mynavbar'>
     <Navbar.Brand className='mynavbar--brand'>Spine Web</Navbar.Brand>
   </Navbar>);
 };

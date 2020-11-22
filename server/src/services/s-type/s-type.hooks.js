@@ -1,12 +1,12 @@
 const { setField } = require('feathers-authentication-hooks');
-
+const checkpermissions = require('feathers-permissions');
 const { authenticate } = require('@feathersjs/authentication').hooks;
 
 module.exports = {
   before: {
     all: [
       authenticate('jwt'),
-      setField({ from: 'params.user.id', as: 'params.query.id' }),
+      checkpermissions({roles: ['admin','s-type']}),
     ],
     find: [],
     get: [],

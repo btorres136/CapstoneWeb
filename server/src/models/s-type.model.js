@@ -21,6 +21,22 @@ class SType extends Model {
     };
   }
 
+  static get relationMappings() {
+    const analysis = require('./analysis.model');
+    return {
+      analysis: {
+        relation: Model.HasManyRelation,
+        modelClass: analysis,
+        join: {
+          from: 'sType.id',
+          to: 'analysis.sType_id'
+        }
+      }
+    }
+  }
+
+
+
   $beforeInsert() {
     this.created_at = this.updated_at = new Date().toISOString();
   }

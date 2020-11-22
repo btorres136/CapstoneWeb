@@ -5,8 +5,17 @@
 @import "./abstract/variables";
 
 @import "./base/base";
+@import "./base/utilities";
+@import "./base/typography";
+
 
 
 @import "./components/dashboard";
 @import "./components/main";
 @import "./components/navbar";
+@import "./components/loading";
+@import "./components/PatientInformation";
+@import "./components/UserInformation";
+@import "./components/myspine";
+@import "./components/react_calendar";
+@import "./components/myanalysis";

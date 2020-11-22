@@ -1,6 +1,10 @@
 module.exports = {
-  userTable: 'user',
-  analysisTable: 'analysis',
   cTypeTable: 'cType',
-  sTypeTable: 'sType'
+  sTypeTable: 'sType',
+  analysisTable: 'analysis',
+  doctorTable: 'doctor',
+  patientTable: 'patient',
+  roleTable: 'roles',
+  userTable: 'user',
+  spineTable: 'spine',
 };
