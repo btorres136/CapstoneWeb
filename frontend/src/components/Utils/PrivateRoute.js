@@ -3,8 +3,14 @@ import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { UserContext } from '../Providers/UserProvider';
 
-const PrivateRoute = ({component: RouteComponent, ...rest}) => {
+const PrivateRoute = ({component: RouteComponent, authorize, ...rest}) => {
   const { userAuth } = useContext(UserContext);
+  if(userAuth){
+    if(authorize.indexOf(userAuth.role) <= -1){
+      console.log('index');
+      return (<Redirect to='/404'/>);
+    }
+  }
   return (
     <Route
       {...rest}
@@ -17,7 +23,8 @@ const PrivateRoute = ({component: RouteComponent, ...rest}) => {
 };
 
 PrivateRoute.propTypes = {
-  component: PropTypes.any
+  component: PropTypes.any,
+  authorize: PropTypes.array,
 };
 
 export default PrivateRoute;

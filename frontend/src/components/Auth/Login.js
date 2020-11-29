@@ -29,7 +29,12 @@ const Login = ({history}) => {
 
 
   if(userAuth){
-    return <Redirect to={'/Dashboard'} />;
+    if(userAuth.role === 'Patient'){
+      return <Redirect to={'/Dashboard'} />;
+    }else if(userAuth.role === 'Doctor'){
+      return <Redirect to={'/Dashboard/Doctor'} />;
+    }
+
   }
   return(<div>
     <Form onSubmit={handleLogin}>

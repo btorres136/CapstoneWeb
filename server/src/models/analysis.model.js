@@ -62,21 +62,12 @@ class Analysis extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['user_id', 'cType_id', 'sType_id'],
+      required: ['image_submitted'],
 
       properties: {
-        user_id: {
-          type: 'integer',
-          minimum: 0
-        },
-        cType_id: {
-          type: 'integer',
-          minimum: 0
-        },
-        sType_id: {
-          type: 'integer',
-          minimum: 0
-        },
+        image_submitted: {
+          type: 'string',
+        }
       },
     };
   }

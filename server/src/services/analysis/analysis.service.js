@@ -6,7 +6,7 @@ const hooks = require('./analysis.hooks');
 module.exports = function (app) {
   const options = {
     Model: analysisModel,
-    paginate: app.get('paginate'),
+    paginate: {default: 70, max: 100},
     whitelist: ['$eager'],
     allowedEager: '[cType, sType, patient, doctor, spine]'
   };

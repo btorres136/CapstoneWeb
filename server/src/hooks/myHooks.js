@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');
 /**
  * @returns true if user is Admin, else return false
  * @param {*} context 
@@ -40,6 +41,30 @@ const filterPatients = (context, app) => {
     }
 }
 
+const uploadImage = async(context, app) => {
+    if(context.data.image_submitted){
+        const patient = await app.service('patient').find({query:{user_id: context.params.user.id}});
+        context.data.patient_id = patient.data[0].id;
+        const id = uuidv4();
+        await app.service('uploads').create({
+            "id": id + ".jpg",
+            "uri": context.data.image_submitted,
+        });
+        context.data.image_submitted = "/img/" + id + ".jpg";
+    }
+}
+
+const getDoctorName =  async (context, app) => {
+    await Promise.all(context.result.data.map(async (data,idx) => {
+        if(data.doctor){
+            const id = data.doctor.user_id;
+            const user = await app.service('users').get(id);
+            context.result.data[idx].doctor.name = user.name;
+            context.result.data[idx].doctor.lastName = user.lastName;
+        }
+    }));
+    return context;
+}
 
 
 
@@ -48,4 +73,6 @@ module.exports = {
     filterAnalysis,
     filterPatients,
     getUserRoleInfo,
+    uploadImage,
+    getDoctorName
 }

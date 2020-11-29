@@ -19,7 +19,6 @@ module.exports = (app) => {
       patch: [],
       remove: []
     },
-  
     after: {
       all: [],
       find: [],
@@ -29,7 +28,6 @@ module.exports = (app) => {
       patch: [],
       remove: []
     },
-  
     error: {
       all: [],
       find: [],

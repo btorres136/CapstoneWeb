@@ -6,6 +6,7 @@ const doctor = require('./doctor/doctor.service.js');
 const patient = require('./patient/patient.service.js');
 const roles = require('./roles/roles.service.js');
 const spine = require('./spine/spine.service.js');
+const uploads = require('./uploads/uploads.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users);
@@ -16,4 +17,5 @@ module.exports = function (app) {
   app.configure(patient);
   app.configure(roles);
   app.configure(spine);
+  app.configure(uploads);
 };

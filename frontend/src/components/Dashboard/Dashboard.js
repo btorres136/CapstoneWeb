@@ -5,12 +5,11 @@ import PatientInformation from './Patient/PatientInformation';
 // eslint-disable-next-line no-unused-vars
 import MyProgress from './Patient/MyProgress';
 import UserInformation from './UserInformation';
-import MyDoctor from './Patient/myDoctors';
+//import MyDoctor from './Patient/myDoctors';
 import MyAnalysis from './Patient/MyAnalysis';
 
 
 const Dashboard = () => {
-
   return (
     <div className='main'>
       <MyNavbar />
@@ -23,7 +22,7 @@ const Dashboard = () => {
             <PatientInformation />
           </div>
           <div className='col-lg-6'>
-            <MyDoctor />
+            <MyProgress />
           </div>
         </div>
         <div className='row'>

@@ -3,22 +3,25 @@ import { Card } from 'react-bootstrap';
 import feathersClient from '../../../feathers-client/feathers';
 import { AnalysisContext } from '../../Providers/AnalysisProvider';
 import AnalysisData from './AnalysisData';
+import { UserContext } from '../../Providers/UserProvider';
+import AnalysisDataDoctor from '../Doctor/AnalysisDataDoctor';
 
 const MyAnalysis = () => {
+  const {userAuth} = useContext(UserContext);
   // eslint-disable-next-line no-unused-vars
   const [analysis, setAnalysis] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const { selectedAnalysis, setSelectedAnalysis } = useContext(AnalysisContext);
   useEffect(() => {
-    feathersClient.service('analysis').find().then((analysis) => {
+    feathersClient.service('analysis').find({paginate:{ default:100, max:100}}).then((analysis) => {
       setAnalysis(analysis.data);
     });
-    feathersClient.service('analysis').on('created', (data) => {
+    /*feathersClient.service('analysis').on('created', (data) => {
       setAnalysis((old) => {
         old.push(data);
         return old;
       });
-    });
+    });*/
   }, []);
   const getAnalysis = (e) => {
     e.preventDefault();
@@ -45,7 +48,7 @@ const MyAnalysis = () => {
               </button>
             </div>
           </div>
-          <AnalysisData />
+          {userAuth.role === 'Patient' ? <AnalysisData /> : <AnalysisDataDoctor/>}
         </>
       ): (<h1>Loading</h1>)}
     </Card>
