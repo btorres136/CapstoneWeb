@@ -63,7 +63,7 @@ app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);
 
-const mainApp = express().use('/api/', app);
+const mainApp = express().use('/api', app);
 const port = app.get('port');
 const server = mainApp.listen(port);
 
