@@ -14,7 +14,7 @@ module.exports = function (app) {
   };*/
 
   // Initialize our service with any options it requires
-  app.use('/uploads',
+  app.use('/api/uploads',
 
   // multer parses the file named 'uri'.
   // Without extra params the data is

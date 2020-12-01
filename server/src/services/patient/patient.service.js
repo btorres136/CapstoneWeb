@@ -12,7 +12,7 @@ module.exports = function (app) {
   };
 
   // Initialize our service with any options it requires
-  app.use('/patient', new Patient(options, app));
+  app.use('/api/patient', new Patient(options, app));
 
   // Get our initialized service so that we can register hooks
   const service = app.service('patient');
