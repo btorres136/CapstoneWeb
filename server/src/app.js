@@ -35,13 +35,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
-app.use('/api',express.static(app.get('public')));
+app.use(express.static(app.get('public')));
 
 //THREEjs Folders
-app.use('/api/build', express.static(path.join(__dirname, '../node_modules/three/build')));
-app.use('/api/jsm', express.static(path.join(__dirname, '../node_modules/three/examples/jsm')));
+app.use('/build', express.static(path.join(__dirname, '../node_modules/three/build')));
+app.use('/jsm', express.static(path.join(__dirname, '../node_modules/three/examples/jsm')));
 
-app.use('/api/img', express.static(path.join(__dirname, './services/uploads/uploads')));
+app.use('/img', express.static(path.join(__dirname, './services/uploads/uploads')));
 
 // Set up Plugins and providers
 app.configure(express.rest());
@@ -63,4 +63,8 @@ app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);
 
-module.exports = app;
+const mainApp = express().use('/api/', app);
+const port = app.get('port');
+const server = mainApp.listen(port);
+
+module.exports = {app, server};

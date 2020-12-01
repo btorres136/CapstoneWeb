@@ -13,7 +13,7 @@ module.exports = app => {
   authentication.register('jwt', new JWTStrategy());
   authentication.register('local', new LocalStrategy());
 
-  app.use('/api/authentication', authentication);
+  app.use('/authentication', authentication);
   const service = app.service('authentication');
   service.hooks({
     before:{
