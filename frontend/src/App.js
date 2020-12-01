@@ -17,10 +17,10 @@ function App() {
       <AnalysisProvider>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={LandingPageLoader} />
-            <PrivateRoute authorize={['Patient']} exact path='/Dashboard' component={Dashboard} />
-            <PrivateRoute authorize={['Doctor']} exact path='/Dashboard/Doctor' component={DoctorDashboard} />
-            <Route exact path='/login' component={Login} />
+            <Route exact path='/app' component={LandingPageLoader} />
+            <PrivateRoute authorize={['Patient']} exact path='/app/Dashboard' component={Dashboard} />
+            <PrivateRoute authorize={['Doctor']} exact path='/app/Dashboard/Doctor' component={DoctorDashboard} />
+            <Route exact path='/app/login' component={Login} />
             <Route component={FourZeroFour} />
           </Switch>
         </BrowserRouter>
