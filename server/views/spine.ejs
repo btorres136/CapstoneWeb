@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; img-src *">-->
     <title>Spine</title>
     <style type="text/css">
       body {
@@ -23,8 +24,8 @@
       crossorigin="anonymous"
     ></script>
     <script type="module">
-      import * as THREE from "/build/three.module.js";
-      import { GLTFLoader } from "/jsm/loaders/GLTFLoader.js";
+      import * as THREE from "./js/three/build/three.module.js";
+      import { GLTFLoader } from "./js/three/examples/jsm/loaders/GLTFLoader.js";
 
       var spine;
       const scene = new THREE.Scene();
